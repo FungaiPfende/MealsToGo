@@ -8,13 +8,13 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 const isAndroid = Platform.OS === "android";
 
 const RestaurantListView = styled.View`
-  background-color: ${(props) => props.theme.colours.bg.primary};
-  padding: ${(props) => props.theme.space.lg};
+  background-color: ${({ theme }) => theme.colours.bg.primary};
+  padding: ${({ theme }) => theme.space.lg};
   flex: 1;
 `;
 
 const SearchView = styled.View`
-  padding: ${(props) => props.theme.space.lg};
+  padding: ${({ theme }) => theme.space.lg};
 `;
 
 const SafeArea = styled.SafeAreaView`
