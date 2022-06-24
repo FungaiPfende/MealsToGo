@@ -1,11 +1,13 @@
 import React from "react";
-import styled from "styled-components/native";
+import styled, { useTheme } from "styled-components/native";
 import { space } from "../../infrastructure/theme/spacing";
 
 const sizeVariant = {
   small: space.sm,
   medium: space.md,
   large: space.lg,
+  xlarge: space.xl,
+  xxlarge: space.xxl,
 };
 
 const positionVariant = {
@@ -18,9 +20,15 @@ const positionVariant = {
 const getVariant = (position, size) =>
   `${positionVariant[position]}: ${sizeVariant[size]}`;
 
-export const Spacer = styled.View`
-  ${({ position, size }) => getVariant(position, size)}
+const SpacerView = styled.View`
+  ${({ variant }) => variant}
 `;
+
+export const Spacer = ({ position, size, children }) => {
+  const theme = useTheme();
+  const variant = getVariant(position, size);
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
 
 // Set up the default props for the `Spacer` component
 // using the .defaultProps property.

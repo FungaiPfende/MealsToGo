@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
-import { Text, View, Image } from "react-native";
+import { Text, Image } from "react-native";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -11,7 +11,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 
 const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.heading}
-  font-size: ${({ theme }) => theme.fontSizes.body}
+  font-size: ${({ theme }) => theme.fontSizes.title}
   color: ${({ theme }) => theme.colours.text.primary};
 `;
 
@@ -65,7 +65,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   // Create an array from the length of rating to use it to
   // loop over when rendering
-  const ratingArray = Array.from(new Array(Math.floor(rating)));
+  const ratingArray = Array.from(new Array(Math.round(rating)));
 
   return (
     <RestaurantCard elevation={5}>

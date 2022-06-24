@@ -10,6 +10,7 @@ import { theme } from "./src/infrastructure/theme";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 
 export default function App() {
+  // Load all the fonts to be used by the application
   const [oswaldLoaded] = useFonts({
     Oswald_400Regular,
   });
@@ -17,6 +18,7 @@ export default function App() {
     Lato_400Regular,
   });
 
+  // Ensure that the fonts are loaded
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }

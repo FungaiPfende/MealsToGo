@@ -17,6 +17,7 @@ const SearchView = styled.View`
   padding: ${({ theme }) => theme.space.lg};
 `;
 
+// Set the top margin of Android devices to clear the status bar.
 const SafeArea = styled.SafeAreaView`
   flex: 1;
   margin-top: ${isAndroid ? StatusBar.currentHeight : 0}px;
