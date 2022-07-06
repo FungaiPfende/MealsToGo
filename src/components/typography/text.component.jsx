@@ -11,6 +11,12 @@ const defaultTextStyles = (theme) => `
 `;
 
 // Create different style variants
+const title = (theme) => `
+  font-family: ${theme.fonts.heading};
+  font-size: ${theme.fontSizes.title};
+  font-weight: ${theme.fontWeights.bold};
+`;
+
 const body = (theme) => `
   font-size: ${theme.fontSizes.body};
 `;
@@ -35,6 +41,7 @@ const label = (theme) => `
 `;
 
 const variants = {
+  title,
   body,
   label,
   caption,
