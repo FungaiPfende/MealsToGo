@@ -1,27 +1,11 @@
 import React from "react";
-import { Platform, StatusBar } from "react-native";
 import { Searchbar } from "react-native-paper";
-import styled from "styled-components/native";
+
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-const isAndroid = Platform.OS === "android";
-
-const RestaurantListView = styled.View`
-  background-color: ${({ theme }) => theme.colours.bg.primary};
-  padding: ${({ theme }) => theme.space.lg};
-  flex: 1;
-`;
-
-const SearchView = styled.View`
-  padding: ${({ theme }) => theme.space.lg};
-`;
-
-// Set the top margin of Android devices to clear the status bar.
-const SafeArea = styled.SafeAreaView`
-  flex: 1;
-  margin-top: ${isAndroid ? StatusBar.currentHeight : 0}px;
-`;
+import { SearchView, SafeArea, RestaurantList } from "./restaurants.style";
 
 export const RestaurantsScreen = () => {
   return (
@@ -29,10 +13,17 @@ export const RestaurantsScreen = () => {
       <SearchView>
         <Searchbar placeholder="Search" />
       </SearchView>
-
-      <RestaurantListView>
-        <RestaurantInfoCard />
-      </RestaurantListView>
+      <RestaurantList
+        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, {}]}
+        renderItem={() => (
+          <Spacer position="bottom" size="large">
+            <RestaurantInfoCard />
+          </Spacer>
+        )}
+        keyExtractor={(item) => item.name}
+        // eslint-disable-next-line react-native/no-inline-styles
+        contentContainerStyle={{ padding: 16 }}
+      />
     </SafeArea>
   );
 };
