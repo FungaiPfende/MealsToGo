@@ -1,5 +1,6 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
+import { StatusBar } from "react-native";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 
@@ -10,9 +11,12 @@ import { SearchView, SafeArea, RestaurantList } from "./restaurants.style";
 export const RestaurantsScreen = () => {
   return (
     <SafeArea>
+      <StatusBar barStyle="dark-content" />
+
       <SearchView>
         <Searchbar placeholder="Search" />
       </SearchView>
+
       <RestaurantList
         data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, {}]}
         renderItem={() => (
