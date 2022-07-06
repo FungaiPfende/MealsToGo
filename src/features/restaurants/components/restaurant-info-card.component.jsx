@@ -1,54 +1,22 @@
 import React from "react";
-import { Card } from "react-native-paper";
-import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
-import { Text, Image } from "react-native";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
-const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.heading}
-  font-size: ${({ theme }) => theme.fontSizes.title}
-  color: ${({ theme }) => theme.colours.text.primary};
-`;
-
-const Info = styled.View`
-  padding: ${({ theme }) => theme.space.lg};
-`;
-
-const Address = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSizes.caption};
-`;
-
-const RestaurantCard = styled(Card)`
-  background-color: ${({ theme }) => theme.colours.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${({ theme }) => theme.space.lg};
-  background-color: ${({ theme }) => theme.colours.bg.primary};
-`;
-
-const Rating = styled.View`
-  flex-direction: row;
-  padding: ${({ theme }) => theme.space.md} 0;
-`;
-
-const Section = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const SectionEnd = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-`;
+import {
+  Info,
+  Address,
+  RestaurantCard,
+  RestaurantCardCover,
+  Rating,
+  Section,
+  SectionEnd,
+  Icon,
+} from "./restaurant-info-card.styles";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -72,7 +40,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
 
       <Info>
-        <Title>{name}</Title>
+        <Text variant="title">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map((item, index) => (
@@ -82,9 +50,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text variant="label" style={{ color: "red", fontSize: 10 }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
 
             <Spacer position="left" size="large">
@@ -92,7 +58,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             </Spacer>
 
             <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
