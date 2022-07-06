@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components/native";
 import { useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { Lato_400Regular } from "@expo-google-fonts/lato";
 import { View, Text } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { theme } from "./src/infrastructure/theme";
 
@@ -49,7 +50,25 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === "Restaurants") {
+                  iconName = focused ? "restaurant" : "restaurant-outline";
+                } else if (route.name === "Settings") {
+                  iconName = focused ? "settings" : "settings-outline";
+                } else {
+                  iconName = focused ? "map" : "map-outline";
+                }
+
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: "tomato",
+              tabBarInactiveTintColor: "gray",
+            })}
+          >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Settings" component={SettingsScreen} />
