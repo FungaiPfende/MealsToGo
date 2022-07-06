@@ -14,6 +14,24 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+function SettingsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Settings!</Text>
+    </View>
+  );
+}
+
+function MapScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Map!</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
 export default function App() {
   // Load all the fonts to be used by the application
   const [oswaldLoaded] = useFonts({
@@ -27,24 +45,6 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
-
-  function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-
-  function MapScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Map!</Text>
-      </View>
-    );
-  }
-
-  const Tab = createBottomTabNavigator();
 
   return (
     <>
