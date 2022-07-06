@@ -3,10 +3,11 @@ import { Searchbar } from "react-native-paper";
 import { StatusBar } from "react-native";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-import { SearchView, SafeArea, RestaurantList } from "./restaurants.style";
+import { SearchView, RestaurantList } from "./restaurants.style";
 
 export const RestaurantsScreen = () => {
   return (
@@ -18,7 +19,7 @@ export const RestaurantsScreen = () => {
       </SearchView>
 
       <RestaurantList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, {}]}
+        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
         renderItem={() => (
           <Spacer position="bottom" size="large">
             <RestaurantInfoCard />
