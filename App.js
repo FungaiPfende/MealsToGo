@@ -14,6 +14,8 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
+
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
