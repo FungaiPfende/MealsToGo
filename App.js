@@ -14,8 +14,6 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
-
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -67,8 +65,9 @@ export default function App() {
 
                 return <Ionicons name={iconName} size={size} color={color} />;
               },
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
+              tabBarActiveTintColor: theme.colours.brand.primary,
+              tabBarInactiveTintColor: theme.colours.ui.secondary,
+              headerShown: false,
             })}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
@@ -78,7 +77,7 @@ export default function App() {
         </NavigationContainer>
       </ThemeProvider>
 
-      <ExpoStatusBar style="auto" />
+      <ExpoStatusBar style="dark" />
     </>
   );
 }
