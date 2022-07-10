@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Searchbar } from "react-native-paper";
 import { StatusBar } from "react-native";
 
@@ -9,7 +9,11 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 
 import { SearchView, RestaurantList } from "./restaurants.style";
 
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+
 export const RestaurantsScreen = () => {
+  const restaurantContext = useContext(RestaurantsContext);
+
   return (
     <SafeArea>
       <StatusBar barStyle="dark-content" />
@@ -19,7 +23,7 @@ export const RestaurantsScreen = () => {
       </SearchView>
 
       <RestaurantList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
+        data={restaurantContext.restaurants}
         renderItem={() => (
           <Spacer position="bottom" size="large">
             <RestaurantInfoCard />

@@ -12,7 +12,9 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
   });
 };
 
-const restaurantsTransform = ({ results = [] }) => {
+// Maps over the properties and add new properties for my own use
+// Transforms all properties to be camelCase using the camelize package.
+export const restaurantsTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
     return {
       ...restaurant,
