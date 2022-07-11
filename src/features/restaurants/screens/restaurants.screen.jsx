@@ -12,7 +12,8 @@ import { SearchView, RestaurantList } from "./restaurants.style";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 export const RestaurantsScreen = () => {
-  const restaurantContext = useContext(RestaurantsContext);
+  // Choose which context I want to use in this component
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
@@ -23,10 +24,10 @@ export const RestaurantsScreen = () => {
       </SearchView>
 
       <RestaurantList
-        data={restaurantContext.restaurants}
-        renderItem={() => (
+        data={restaurants} // This data comes straight from the context I set up earlier
+        renderItem={({ item }) => (
           <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
+            <RestaurantInfoCard restaurant={item} />
           </Spacer>
         )}
         keyExtractor={(item) => item.name}
