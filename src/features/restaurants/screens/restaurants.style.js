@@ -2,10 +2,6 @@ import styled from "styled-components/native";
 import { FlatList } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 
-export const SearchView = styled.View`
-  padding: ${({ theme }) => theme.space.lg};
-`;
-
 export const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,

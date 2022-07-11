@@ -1,19 +1,14 @@
 import React, { useContext } from "react";
-import { Searchbar, Colors } from "react-native-paper";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card/restaurant-info-card.component";
+import { Search } from "../components/search/search.component";
 
 import { colours } from "../../../infrastructure/theme/colours";
 
-import {
-  SearchView,
-  RestaurantList,
-  Loader,
-  LoadingContainer,
-} from "./restaurants.style";
+import { RestaurantList, Loader, LoadingContainer } from "./restaurants.style";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
@@ -29,9 +24,7 @@ export const RestaurantsScreen = () => {
         </LoadingContainer>
       )}
 
-      <SearchView>
-        <Searchbar placeholder="Search" />
-      </SearchView>
+      <Search />
 
       <RestaurantList
         data={restaurants} // This data comes straight from the context I set up earlier
