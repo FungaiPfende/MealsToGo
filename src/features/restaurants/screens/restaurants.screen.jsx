@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
-import { Searchbar } from "react-native-paper";
-import { StatusBar } from "react-native";
+import { Searchbar, Colors } from "react-native-paper";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-import { SearchView, RestaurantList } from "./restaurants.style";
+import { colours } from "../../../infrastructure/theme/colours";
+
+import {
+  SearchView,
+  RestaurantList,
+  Loader,
+  LoadingContainer,
+} from "./restaurants.style";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
@@ -17,7 +23,11 @@ export const RestaurantsScreen = () => {
 
   return (
     <SafeArea>
-      <StatusBar barStyle="dark-content" />
+      {isLoading && (
+        <LoadingContainer>
+          <Loader size={50} animating={true} color={colours.brand.primary} />
+        </LoadingContainer>
+      )}
 
       <SearchView>
         <Searchbar placeholder="Search" />
