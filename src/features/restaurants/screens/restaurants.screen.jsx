@@ -14,7 +14,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 
 export const RestaurantsScreen = () => {
   // Choose which context I want to use in this component
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
