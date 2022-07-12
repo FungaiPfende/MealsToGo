@@ -1,5 +1,5 @@
 ## TOOLING
-- ESLint
+- ESLint - react-native-community configuration
 - Prettier
 - Styled Components for styling and theming
 - Made a design infrastructure/system from scratch
