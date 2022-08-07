@@ -5,11 +5,11 @@ import { theme } from "../theme";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
-
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { RestaurantsNavigator } from "./restaurants.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +52,7 @@ export const AppNavigator = () => {
           headerShown: false,
         })}
       >
-        <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+        <Tab.Screen name="RestaurantsTab" component={RestaurantsNavigator} />
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
