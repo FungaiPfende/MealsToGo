@@ -11,10 +11,11 @@ import { colours } from "../../../infrastructure/theme/colours";
 import { RestaurantList, Loader, LoadingContainer } from "./restaurants.style";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Pressable } from "react-native";
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   // Choose which context I want to use in this component
-  const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
@@ -29,9 +30,11 @@ export const RestaurantsScreen = () => {
       <RestaurantList
         data={restaurants} // This data comes straight from the context I set up earlier
         renderItem={({ item }) => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard restaurant={item} />
-          </Spacer>
+          <Pressable onPress={() => navigation.navigate("RestaurantDetails")}>
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          </Pressable>
         )}
         keyExtractor={(item) => item.name}
         // eslint-disable-next-line react-native/no-inline-styles
