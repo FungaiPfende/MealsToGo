@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 
 import {
   createStackNavigator,
@@ -7,6 +6,7 @@ import {
 } from "@react-navigation/stack";
 
 import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
+import { RestaurantDetailsScreen } from "../../features/restaurants/screens/restaurant-details.screen";
 
 const RestaurantsStack = createStackNavigator();
 
@@ -25,7 +25,7 @@ export const RestaurantsNavigator = () => {
       />
       <RestaurantsStack.Screen
         name="RestaurantDetails"
-        component={() => <Text>Restaurant Details</Text>}
+        component={RestaurantDetailsScreen}
       />
     </RestaurantsStack.Navigator>
   );
