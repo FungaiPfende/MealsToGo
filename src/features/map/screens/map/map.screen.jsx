@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Marker, Callout } from "react-native-maps";
+import { Marker } from "react-native-maps";
 
 import { LocationContext } from "../../../../services/location/location.context";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
@@ -27,6 +27,7 @@ export const MapScreen = () => {
   return (
     <>
       <Search />
+
       <Map
         region={{
           latitude: lat,
