@@ -19,7 +19,7 @@ export const Search = () => {
         placeholder="Search for a location..."
         icon="map"
         value={searchKeyword}
-        onSubmitEditing={() => search(searchKeyword)}
+        onSubmitEditing={() => search(searchKeyword.trim())}
         onChangeText={(text) => {
           if (!text.length) {
           }
