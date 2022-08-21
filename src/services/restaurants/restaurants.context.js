@@ -7,7 +7,7 @@ import {
   restaurantsTransform,
 } from "./restaurants.service";
 
-// Create global context ti be used throughout the app.
+// Create global context to be used throughout the app.
 export const RestaurantsContext = createContext();
 
 // Creates a Provider for that context to be used throughout.

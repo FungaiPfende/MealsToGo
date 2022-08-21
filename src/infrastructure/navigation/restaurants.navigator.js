@@ -10,7 +10,7 @@ export const RestaurantsNavigator = () => {
   return (
     <RestaurantsStack.Navigator screenOptions={{ headerShown: false }}>
       <RestaurantsStack.Screen
-        name="Restaurants"
+        name="RestaurantsScreen"
         component={RestaurantsScreen}
       />
     </RestaurantsStack.Navigator>
