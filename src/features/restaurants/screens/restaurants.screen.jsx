@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { TouchableOpacity as TouchableHighlight } from "react-native";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -11,7 +12,6 @@ import { colours } from "../../../infrastructure/theme/colours";
 import { RestaurantList, Loader, LoadingContainer } from "./restaurants.style";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { Pressable } from "react-native";
 
 export const RestaurantsScreen = ({ navigation }) => {
   // Choose which context I want to use in this component
@@ -30,11 +30,14 @@ export const RestaurantsScreen = ({ navigation }) => {
       <RestaurantList
         data={restaurants} // This data comes straight from the context I set up earlier
         renderItem={({ item }) => (
-          <Pressable onPress={() => navigation.navigate("RestaurantDetails")}>
+          <TouchableHighlight
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate("RestaurantDetails")}
+          >
             <Spacer position="bottom" size="large">
               <RestaurantInfoCard restaurant={item} />
             </Spacer>
-          </Pressable>
+          </TouchableHighlight>
         )}
         keyExtractor={(item) => item.name}
         // eslint-disable-next-line react-native/no-inline-styles
