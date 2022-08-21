@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { theme } from "../theme";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
-import { MapScreen } from "../../features/map/screens/map.screen";
+import { MapScreen } from "../../features/map/screens/map/map.screen";
 
 const Tab = createBottomTabNavigator();
 

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import React from "react";
 import { List } from "react-native-paper";
 
@@ -20,7 +20,7 @@ export const RestaurantDetailsScreen = ({ route }) => {
           >
             <List.Item title="Eggs and bacon" />
             <List.Item title="French toast" />
-            <List.Item title="Oats with Orange juice" />
+            <List.Item title="Oats with juice" />
           </List.Accordion>
 
           <List.Accordion
@@ -55,5 +55,3 @@ export const RestaurantDetailsScreen = ({ route }) => {
     </SafeArea>
   );
 };
-
-const styles = StyleSheet.create({});
