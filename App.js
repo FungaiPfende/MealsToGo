@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import {} from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { Lato_400Regular } from "@expo-google-fonts/lato";
 import { initializeApp } from "firebase/app";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
@@ -24,8 +24,20 @@ const firebaseConfig = {
 };
 
 const MyApp = initializeApp(firebaseConfig);
+const auth = getAuth(MyApp);
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    signInWithEmailAndPassword(auth, "me@fungaip.co.zw", "test123")
+      .then((user) => {
+        console.log(user);
+        setIsAuthenticated(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   // Load all the fonts to be used by the application
   const [oswaldLoaded] = useFonts({
     Oswald_400Regular,
@@ -38,6 +50,8 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
+
+  if (!isAuthenticated) return null;
 
   return (
     <>
