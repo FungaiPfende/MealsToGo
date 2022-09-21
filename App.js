@@ -24,6 +24,7 @@ const firebaseConfig = {
   appId: "1:1092426510040:web:c7e287b8e6aae9258fb1ad",
 };
 
+// Never do `export const.....` because it'll cause a fatal error.
 const MyApp = initializeApp(firebaseConfig);
 export const auth = getAuth(MyApp);
 

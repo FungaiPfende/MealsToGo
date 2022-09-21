@@ -1,4 +1,6 @@
+import { Button } from "react-native-paper";
 import styled from "styled-components/native";
+import { colours } from "../../../infrastructure/theme/colours";
 
 export const AuthBackground = styled.ImageBackground.attrs({
   source: require("../../../../assets/home_bg.jpg"),
@@ -13,4 +15,16 @@ export const AuthCover = styled.View`
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3);
+`;
+
+export const AuthContainer = styled.View`
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: ${({ theme }) => theme.space.xl};
+  margin-top: ${({ theme }) => theme.space.md};
+`;
+
+export const AuthButton = styled(Button).attrs({
+  color: colours.brand.primary,
+})`
+  padding: ${({ theme }) => theme.space.md};
 `;
