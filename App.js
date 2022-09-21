@@ -12,6 +12,7 @@ import { RestaurantsContextProvider } from "./src/services/restaurants/restauran
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthContextProvider } from "./src/services/authentication/authentication.context";
+import { getAuth } from "firebase/auth";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -23,7 +24,8 @@ const firebaseConfig = {
   appId: "1:1092426510040:web:c7e287b8e6aae9258fb1ad",
 };
 
-export const MyApp = initializeApp(firebaseConfig);
+const MyApp = initializeApp(firebaseConfig);
+export const auth = getAuth(MyApp);
 
 export default function App() {
   // Load all the fonts to be used by the application
