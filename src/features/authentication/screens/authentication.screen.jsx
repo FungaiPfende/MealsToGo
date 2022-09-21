@@ -1,18 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
 import React from "react";
+
+import { AuthBackground, AuthCover } from "../components/authentication.styles";
 
 export const AuthScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>AuthScreen</Text>
-    </View>
+    <AuthBackground>
+      <AuthCover />
+    </AuthBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-});

@@ -1,12 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { AuthBackground } from "../components/authentication.styles";
 
 export const LoginScreen = () => {
-  return (
-    <View>
-      <Text>LoginScreen</Text>
-    </View>
-  );
+  return <AuthBackground />;
 };
-
-const styles = StyleSheet.create({});
