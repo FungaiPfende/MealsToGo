@@ -6,15 +6,17 @@ import {
   AuthButton,
   AuthContainer,
   AuthCover,
+  Title,
 } from "../components/authentication.styles";
 
 export const AuthScreen = ({ navigation }) => {
   return (
     <AuthBackground>
       <AuthCover />
+      <Title>Meals To Go</Title>
       <AuthContainer>
         <AuthButton
-          icon="lock-open-outline"
+          icon="lock-open"
           mode="contained"
           onPress={() => navigation.navigate("Login")}
         >
