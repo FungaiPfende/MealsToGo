@@ -21,13 +21,9 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <AuthBackground>
       <AuthCover />
-<<<<<<< HEAD
 
       <Title>Meals To Go</Title>
 
-=======
-      <Title>Meals To Go</Title>
->>>>>>> c9582d0d7fc13f9a4540a68536fdb495c4fe83e7
       <AuthContainer>
         <AuthInput
           label="E-mail"
@@ -35,11 +31,7 @@ export const LoginScreen = ({ navigation }) => {
           textContentType="emailAddress"
           keyboardType="email-address"
           autoCapitalize="none"
-<<<<<<< HEAD
           onChangeText={(e) => setEmail(e)}
-=======
-          onChangeText={(u) => setEmail(u)}
->>>>>>> c9582d0d7fc13f9a4540a68536fdb495c4fe83e7
         />
 
         <Spacer size="large">
@@ -47,30 +39,17 @@ export const LoginScreen = ({ navigation }) => {
             label="Password"
             value={password}
             textContentType="password"
-<<<<<<< HEAD
             autoCapitalize="none"
             secureTextEntry
-=======
-            secureTextEntry
-            autoCapitalize="none"
->>>>>>> c9582d0d7fc13f9a4540a68536fdb495c4fe83e7
             secure
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
 
         {error && (
-<<<<<<< HEAD
           <ErrorContainer size="large">
             <Text variant="error">{error}</Text>
           </ErrorContainer>
-=======
-          <Spacer size="large">
-            <ErrorContainer>
-              <Text variant="error">{error}</Text>
-            </ErrorContainer>
-          </Spacer>
->>>>>>> c9582d0d7fc13f9a4540a68536fdb495c4fe83e7
         )}
 
         <Spacer size="large">

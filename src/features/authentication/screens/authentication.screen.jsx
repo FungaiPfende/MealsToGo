@@ -14,10 +14,7 @@ export const AuthScreen = ({ navigation }) => {
     <AuthBackground>
       <AuthCover />
       <Title>Meals To Go</Title>
-<<<<<<< HEAD
 
-=======
->>>>>>> c9582d0d7fc13f9a4540a68536fdb495c4fe83e7
       <AuthContainer>
         <AuthButton
           icon="lock-open"
