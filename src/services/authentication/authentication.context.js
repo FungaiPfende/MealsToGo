@@ -16,9 +16,8 @@ export const AuthContextProvider = ({ children }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setError(err);
         setIsLoading(false);
-        console.error("Error On Authentication:", err);
+        setError(err.toString());
       });
   };
 

@@ -1,5 +1,6 @@
-import { Button } from "react-native-paper";
+import { Button, TextInput } from "react-native-paper";
 import styled from "styled-components/native";
+import { Text } from "../../../components/typography/text.component";
 import { colours } from "../../../infrastructure/theme/colours";
 
 export const AuthBackground = styled.ImageBackground.attrs({
@@ -27,4 +28,21 @@ export const AuthButton = styled(Button).attrs({
   color: colours.brand.primary,
 })`
   padding: ${({ theme }) => theme.space.md};
+  border-radius: ${({ theme }) => theme.size.sm};
+`;
+
+export const AuthInput = styled(TextInput)`
+  width: 300px;
+`;
+
+export const Title = styled(Text)`
+  font-size: 30px;
+`;
+
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: ${({ theme }) => theme.space.md};
+  margin: ${({ theme }) => theme.space.md};
 `;
