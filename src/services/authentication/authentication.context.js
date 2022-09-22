@@ -1,6 +1,11 @@
 import React, { createContext, useState } from "react";
 
-import { loginRequest, registerRequest } from "./authentication.service";
+import {
+  loginRequest,
+  logoutRequest,
+  registerRequest,
+  checkUser,
+} from "./authentication.service";
 
 export const AuthContext = createContext();
 
@@ -8,6 +13,15 @@ export const AuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
+  checkUser((usr) => {
+    if (usr) {
+      setUser(usr);
+      setIsLoading(false);
+    } else {
+      setIsLoading(false);
+    }
+  });
 
   const onLogin = (email, password) => {
     setIsLoading(true);
@@ -22,14 +36,19 @@ export const AuthContextProvider = ({ children }) => {
       });
   };
 
+  const onLogout = () => {
+    setUser(null);
+    logoutRequest();
+  };
+
   const onRegister = (email, password, repeatedPassword) => {
+    setIsLoading(true);
     if (password !== repeatedPassword) {
       setIsLoading(false);
       setError("Error: Passwords do not match!");
       return;
     }
 
-    setIsLoading(true);
     registerRequest(email, password)
       .then((u) => {
         setUser(u);
@@ -50,6 +69,7 @@ export const AuthContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}
