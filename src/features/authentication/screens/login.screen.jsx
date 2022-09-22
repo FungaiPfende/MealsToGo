@@ -16,6 +16,7 @@ import { AuthContext } from "../../../services/authentication/authentication.con
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const { onLogin, error } = useContext(AuthContext);
 
   return (
@@ -41,7 +42,6 @@ export const LoginScreen = ({ navigation }) => {
             textContentType="password"
             autoCapitalize="none"
             secureTextEntry
-            secure
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
@@ -64,7 +64,11 @@ export const LoginScreen = ({ navigation }) => {
       </AuthContainer>
 
       <Spacer size="large">
-        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+        <AuthButton
+          mode="contained"
+          icon="arrow-left-bold"
+          onPress={() => navigation.goBack()}
+        >
           Back
         </AuthButton>
       </Spacer>

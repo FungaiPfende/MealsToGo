@@ -27,7 +27,7 @@ export const AuthScreen = ({ navigation }) => {
         <Spacer size="large" />
 
         <AuthButton
-          icon="email"
+          icon="account-plus"
           mode="contained"
           onPress={() => navigation.navigate("SignUp")}
         >

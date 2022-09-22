@@ -28,7 +28,7 @@ export const AuthButton = styled(Button).attrs({
   color: colours.brand.primary,
 })`
   padding: ${({ theme }) => theme.space.md};
-  border-radius: ${({ theme }) => theme.size.sm};
+  border-radius: ${({ theme }) => theme.sizes.sm};
 `;
 
 export const AuthInput = styled(TextInput)`
