@@ -26,8 +26,8 @@ export const AuthContextProvider = ({ children }) => {
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
-      .then((u) => {
-        setUser(u);
+      .then((usr) => {
+        setUser(usr);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -50,8 +50,8 @@ export const AuthContextProvider = ({ children }) => {
 
     setIsLoading(true);
     registerRequest(email, password)
-      .then((u) => {
-        setUser(u);
+      .then((usr) => {
+        setUser(usr);
         setIsLoading(false);
       })
       .catch((err) => {
