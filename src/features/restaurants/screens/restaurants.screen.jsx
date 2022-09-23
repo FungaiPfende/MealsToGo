@@ -14,6 +14,7 @@ import { RestaurantList, Loader, LoadingContainer } from "./restaurants.style";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const RestaurantsScreen = ({ navigation }) => {
   // Choose which context I want to use in this component
@@ -51,7 +52,9 @@ export const RestaurantsScreen = ({ navigation }) => {
             }
           >
             <Spacer position="bottom" size="large">
-              <RestaurantInfoCard restaurant={item} />
+              <FadeInView>
+                <RestaurantInfoCard restaurant={item} />
+              </FadeInView>
             </Spacer>
           </TouchableHighlight>
         )}
