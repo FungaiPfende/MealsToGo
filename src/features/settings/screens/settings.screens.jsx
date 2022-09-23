@@ -12,12 +12,13 @@ import { AuthContext } from "../../../services/authentication/authentication.con
 const Icon = (props) => <List.Icon {...props} />;
 
 const SettingsItem = styled(List.Item)`
-  padding: ${({ theme }) => theme.space.lg};
+  padding: ${({ theme }) => theme.space.sm};
 `;
 
 const AvatarContainer = styled.View`
   align-items: center;
   margin-top: ${({ theme }) => theme.space.lg};
+  margin-bottom: ${({ theme }) => theme.space.lg};
 `;
 
 export const SettingsScreen = ({ navigation }) => {
@@ -39,14 +40,15 @@ export const SettingsScreen = ({ navigation }) => {
       <List.Section>
         <SettingsItem
           title="Favourites"
-          description="View your favourites"
+          description="View all your favourites"
           left={() => <Icon color="black" icon="heart-outline" />}
           onPress={() => navigation.navigate("Favourites")}
         />
 
         <SettingsItem
           title="Logout"
-          left={() => <Icon color="black" icon="door" />}
+          description="Log out of the app"
+          left={() => <Icon color="red" icon="door" />}
           onPress={() => onLogout()}
         />
       </List.Section>

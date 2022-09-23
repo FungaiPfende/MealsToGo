@@ -2,7 +2,9 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const Info = styled.View`
-  padding: ${({ theme }) => theme.space.lg};
+  padding-left: ${({ theme }) => theme.space.lg};
+  padding-right: ${({ theme }) => theme.space.lg};
+  padding-bottom: ${({ theme }) => theme.space.lg};
 `;
 
 export const Address = styled.Text`
