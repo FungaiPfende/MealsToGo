@@ -37,6 +37,7 @@ export const AuthInput = styled(TextInput)`
 
 export const Title = styled(Text)`
   font-size: 30px;
+  margin-top: ${({ theme }) => theme.space.lg};
 `;
 
 export const ErrorContainer = styled.View`
@@ -45,4 +46,12 @@ export const ErrorContainer = styled.View`
   align-self: center;
   margin-top: ${({ theme }) => theme.space.md};
   margin: ${({ theme }) => theme.space.md};
+`;
+
+export const AnimationWrapper = styled.View`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${({ theme }) => theme.space.md};
 `;
