@@ -4,7 +4,7 @@ import {
   loginRequest,
   logoutRequest,
   registerRequest,
-  checkUser,
+  checkUserAuthStatus,
 } from "./authentication.service";
 
 export const AuthContext = createContext();
@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  checkUser((usr) => {
+  checkUserAuthStatus((usr) => {
     if (usr) {
       setUser(usr);
       setIsLoading(false);
@@ -37,18 +37,24 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const onLogout = () => {
-    setUser(null);
-    logoutRequest();
+    logoutRequest()
+      .then(() => {
+        setUser(null);
+        setError(null);
+        console.log("Sign-out successful.");
+      })
+      .catch((err) => {
+        setError(`Error on sign-out: ${err}`);
+      });
   };
 
   const onRegister = (email, password, repeatedPassword) => {
+    setIsLoading(true);
     if (password !== repeatedPassword) {
-      setIsLoading(false);
       setError("Error: Passwords do not match!");
       return;
     }
 
-    setIsLoading(true);
     registerRequest(email, password)
       .then((usr) => {
         setUser(usr);
