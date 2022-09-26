@@ -15,7 +15,7 @@ export const FavouritesContextProvider = ({ children }) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
     } catch (error) {
-      console.log("Error Saving:", error);
+      console.log("Error Saving Favourites:", error);
     }
   };
 
@@ -23,10 +23,11 @@ export const FavouritesContextProvider = ({ children }) => {
     try {
       const value = await AsyncStorage.getItem(`@favourites-${uid}`);
       const jsonValue = JSON.parse(value);
-      value != null && setFavourites(jsonValue);
-      // if (value != null) setFavourites(jsonValue);
+      if (value != null) {
+        setFavourites(jsonValue);
+      }
     } catch (error) {
-      console.log("Error Loading:", error);
+      console.log("Error Loading Favourites:", error);
     }
   };
 
@@ -44,14 +45,14 @@ export const FavouritesContextProvider = ({ children }) => {
 
   // Load all the `favourites` on the component's first mount
   useEffect(() => {
-    if (user) {
+    if (user && user.uid) {
       loadFavourites(user.uid);
     }
   }, [user]);
 
   // Save the `favourites` to Local Storage anytime the `favourites` change.
   useEffect(() => {
-    if (user) {
+    if (user && user.uid && favourites.length) {
       saveFavourites(favourites, user.uid);
     }
   }, [favourites, user]);
