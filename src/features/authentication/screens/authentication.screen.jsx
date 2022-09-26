@@ -23,7 +23,7 @@ export const AuthScreen = ({ navigation }) => {
           autoPlay={true}
           loop={true}
           resizeMode="cover"
-          source={require("../../../../assets/watermelon.json")}
+          source={require("../../../../assets/map.lottie.json")}
         />
       </AnimationWrapper>
       <Title>Meals To Go</Title>
