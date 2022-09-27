@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
 import styled from "styled-components/native";
 
@@ -27,11 +28,14 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <AvatarContainer>
-        <Avatar.Icon
-          size={180}
-          icon="human"
-          backgroundColor={colours.brand.secondary}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+          <Avatar.Icon
+            size={180}
+            icon="human"
+            backgroundColor={colours.brand.secondary}
+          />
+        </TouchableOpacity>
+
         <Spacer position="top" size="large">
           <Text variant="label">{user.email}</Text>
         </Spacer>
@@ -41,7 +45,7 @@ export const SettingsScreen = ({ navigation }) => {
         <SettingsItem
           title="Favourites"
           description="View all your favourites"
-          left={() => <Icon color="black" icon="heart-outline" />}
+          left={() => <Icon color="black" icon="heart" />}
           onPress={() => navigation.navigate("Favourites")}
         />
 
