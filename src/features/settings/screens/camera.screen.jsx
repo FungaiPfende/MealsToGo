@@ -1,19 +1,23 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { Camera } from "expo-camera";
 import styled from "styled-components";
 import { View, TouchableOpacity } from "react-native";
 
 import { Text } from "../../../components/typography/text.component";
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
+import { AuthContext } from "../../../services/authentication/authentication.context";
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
   height: 100%;
 `;
 
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const cameraRef = useRef();
+  const { user } = useContext(AuthContext);
 
+  // Request for the permissions to access camera
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
@@ -27,10 +31,12 @@ export const CameraScreen = () => {
     return <Text>No access to camera</Text>;
   }
 
+  //Take a picture, store it to the devices storage according to the user and go back to the previous screen
   const snapPicture = async () => {
     if (cameraRef) {
       const photo = await cameraRef.current.takePictureAsync();
-      console.log(photo);
+      AsyncStorageLib.setItem(`${user.uid}-profilePicture`, photo.uri);
+      navigation.goBack();
     }
   };
 
