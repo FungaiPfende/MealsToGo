@@ -31,11 +31,11 @@ export const FavouritesContextProvider = ({ children }) => {
     }
   };
 
-  const add = (restaurant) => {
+  const addToFavourites = (restaurant) => {
     setFavourites([...favourites, restaurant]);
   };
 
-  const remove = (restaurant) => {
+  const removeFromFavourites = (restaurant) => {
     const newFavourites = favourites.filter(
       (x) => x.placeId !== restaurant.placeId
     );
@@ -61,8 +61,8 @@ export const FavouritesContextProvider = ({ children }) => {
     <FavouritesContext.Provider
       value={{
         favourites,
-        addToFavourites: add,
-        removeFromFavourites: remove,
+        addToFavourites,
+        removeFromFavourites,
       }}
     >
       {children}
