@@ -1,16 +1,15 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Camera } from "expo-camera";
-import styled from "styled-components";
-import { View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 
 import { Text } from "../../../components/typography/text.component";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 import { AuthContext } from "../../../services/authentication/authentication.context";
-
-const ProfileCamera = styled(Camera)`
-  width: 100%;
-  height: 100%;
-`;
+import {
+  CameraButton,
+  CameraDot,
+  ProfileCamera,
+} from "../components/camera.styles";
 
 export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -41,11 +40,13 @@ export const CameraScreen = ({ navigation }) => {
   };
 
   return (
-    <TouchableOpacity onPress={() => snapPicture()}>
-      <ProfileCamera
-        ref={(camera) => (cameraRef.current = camera)}
-        type={Camera.Constants.Type.front}
-      />
-    </TouchableOpacity>
+    <ProfileCamera
+      ref={(camera) => (cameraRef.current = camera)}
+      type={Camera.Constants.Type.front}
+    >
+      <CameraButton onPress={() => snapPicture()}>
+        <CameraDot />
+      </CameraButton>
+    </ProfileCamera>
   );
 };
