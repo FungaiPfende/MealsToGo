@@ -1,0 +1,86 @@
+[debug] [2022-09-29T20:13:55.256Z] ----------------------------------------------------------------------
+[debug] [2022-09-29T20:13:55.261Z] Command:       /home/pariah/.nvm/versions/node/v16.16.0/bin/node /usr/local/bin/firebase emulators:start --only functions
+[debug] [2022-09-29T20:13:55.272Z] CLI Version:   11.11.0
+[debug] [2022-09-29T20:13:55.272Z] Platform:      linux
+[debug] [2022-09-29T20:13:55.272Z] Node Version:  v16.16.0
+[debug] [2022-09-29T20:13:55.326Z] Time:          Thu Sep 29 2022 22:13:55 GMT+0200 (South Africa Standard Time)
+[debug] [2022-09-29T20:13:55.326Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-29T20:13:55.337Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-09-29T20:13:55.778Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-29T20:13:55.779Z] > authorizing via signed-in user (swagammunition@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2022-09-29T20:13:55.859Z] [hub] writing locator at /tmp/hub-meals-to-go-cd149.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage, eventarc {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage, eventarc\u001b[22m"}}
+[info] ✔  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2022-09-29T20:13:56.091Z] defaultcredentials: writing to file /home/pariah/.config/firebase/swagammunition_gmail_com_application_default_credentials.json
+[debug] [2022-09-29T20:13:56.102Z] Setting GAC to /home/pariah/.config/firebase/swagammunition_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /home/pariah/.config/firebase/swagammunition_gmail_com_application_default_credentials.json"}}
+[debug] [2022-09-29T20:13:56.105Z] > refreshing access token with scopes: []
+[debug] [2022-09-29T20:13:56.108Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-09-29T20:13:56.108Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-09-29T20:13:56.812Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-09-29T20:13:56.813Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-09-29T20:13:57.627Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-09-29T20:13:57.627Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-09-29T20:13:57.709Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/meals-to-go-cd149/adminSdkConfig [none]
+[debug] [2022-09-29T20:13:59.386Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/meals-to-go-cd149/adminSdkConfig 200
+[debug] [2022-09-29T20:13:59.387Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/meals-to-go-cd149/adminSdkConfig {"projectId":"meals-to-go-cd149","storageBucket":"meals-to-go-cd149.appspot.com"}
+[debug] [2022-09-29T20:13:59.570Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-09-29T20:13:59.571Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-09-29T20:13:59.571Z] Starting Emulator UI with command {"binary":"node","args":["/home/pariah/.cache/firebase/emulators/ui-v1.9.0/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/home/pariah/.cache/firebase/emulators/ui-v1.9.0/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-09-29T20:13:59.950Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[info] i  functions: Watching "/home/pariah/projects/MealsToGo/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/home/pariah/projects/MealsToGo/functions\" for Cloud Functions..."}}
+[debug] [2022-09-29T20:14:00.112Z] Validating nodejs source
+[debug] [2022-09-29T20:14:06.181Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.16",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-09-29T20:14:06.182Z] Building nodejs source
+[debug] [2022-09-29T20:14:06.183Z] Analyzing nodejs backend spec
+[debug] [2022-09-29T20:14:06.188Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-09-29T20:14:06.828Z] Serving at port 9005
+
+[debug] [2022-09-29T20:14:07.385Z] Got response from /__/functions.yaml {"endpoints":{"geocode":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"geocode"},"nearbyPlaces":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"nearbyPlaces"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-09-29T20:14:07.405Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: geocode, nearbyPlaces. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: geocode, nearbyPlaces."}}
+[info] ✔  functions[us-central1-geocode]: http function initialized (http://127.0.0.1:5001/meals-to-go-cd149/us-central1/geocode). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/meals-to-go-cd149/us-central1/geocode)."}}
+[info] ✔  functions[us-central1-nearbyPlaces]: http function initialized (http://127.0.0.1:5001/meals-to-go-cd149/us-central1/nearbyPlaces). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/meals-to-go-cd149/us-central1/nearbyPlaces)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
