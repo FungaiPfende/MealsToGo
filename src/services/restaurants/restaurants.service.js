@@ -1,8 +1,9 @@
 import camelize from "camelize";
-import { host } from "../../utils/env";
+import { host, isMock } from "../../utils/env";
 
 export const restaurantsRequest = async (location) => {
   try {
+    // const response = await fetch(`${host}/nearbyPlaces?location=${location}&mock=${isMock}`);
     const response = await fetch(`${host}/nearbyPlaces?location=${location}`);
     console.log(
       "Successfully called NearbyPlaces Function in Restaurant Service"

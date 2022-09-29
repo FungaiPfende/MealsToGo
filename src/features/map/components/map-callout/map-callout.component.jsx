@@ -9,11 +9,10 @@ export const MapCallout = ({ restaurant }) => {
   const navigation = useNavigation();
 
   return (
-    <Callout>
-      <TouchableOpacity
-        activeOpacity={0.65}
-        onPress={() => navigation.navigate("RestaurantDetails", { restaurant })}
-      >
+    <Callout
+      onPress={() => navigation.navigate("RestaurantDetails", { restaurant })}
+    >
+      <TouchableOpacity activeOpacity={0.65}>
         <CompactRestaurantInfo restaurant={restaurant} />
       </TouchableOpacity>
     </Callout>

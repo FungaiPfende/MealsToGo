@@ -24,6 +24,10 @@ export const MapScreen = () => {
     setLatDelta(result);
   }, [location, viewport]);
 
+  if (!location) {
+    return <Map region={{ latitude: 0, longitude: 0 }} />;
+  }
+
   return (
     <>
       <Search />

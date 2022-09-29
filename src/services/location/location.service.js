@@ -1,8 +1,9 @@
 import camelize from "camelize";
-import { host } from "../../utils/env";
+import { host, isMock } from "../../utils/env";
 
 export const locationRequest = async (city) => {
   try {
+    //     const response = await fetch(`${host}/geocode?city=${city}&mock=${isMock}`);
     const response = await fetch(`${host}/geocode?city=${city}`);
     console.log("Successfully called Geocode Function in Location Service");
 
