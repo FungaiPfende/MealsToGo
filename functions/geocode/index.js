@@ -13,7 +13,7 @@ module.exports.geocodeRequest = (request, response, client) => {
     .geocode({
       params: {
         address: city,
-        key: "apikey",
+        key: process.env.KEY,
       },
       timeout: 1000,
     })

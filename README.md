@@ -12,6 +12,8 @@
 - Firebase (Cloud Functions)
 - Lottie
 - [Google Maps Service](https://github.com/googlemaps/google-maps-services-js)
+- Google Places API
+- Google Geocoding API
 
 ### Camera
 
