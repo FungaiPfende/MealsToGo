@@ -1,11 +1,10 @@
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
 export const locationRequest = async (city) => {
   try {
-    const response = await fetch(
-      `https://us-central1-meals-to-go-cd149.cloudfunctions.net/geocode?city=${city}`
-    );
-    console.log("Successfully called Geocode in Location Service");
+    const response = await fetch(`${host}/geocode?city=${city}`);
+    console.log("Successfully called Geocode Function in Location Service");
 
     return await response.json();
   } catch (err) {

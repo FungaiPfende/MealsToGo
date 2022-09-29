@@ -1,11 +1,12 @@
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
 export const restaurantsRequest = async (location) => {
   try {
-    const response = await fetch(
-      `https://us-central1-meals-to-go-cd149.cloudfunctions.net/nearbyPlaces?location=${location}`
+    const response = await fetch(`${host}/nearbyPlaces?location=${location}`);
+    console.log(
+      "Successfully called NearbyPlaces Function in Restaurant Service"
     );
-    console.log("Successfully called NearbyPlaces in Restaurant Service");
 
     return await response.json();
   } catch (err) {
