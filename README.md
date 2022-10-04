@@ -1,19 +1,21 @@
 ## TOOLING
 
-- ESLint - react-native-community configuration
+- [eslint-react-native-community-config](https://github.com/facebook/react-native/tree/main/packages/eslint-config-react-native-community)
 - Prettier
-- Styled Components for styling and theming
+- [Styled Components](https://styled-components.com/) for styling and theming
 - Made a design infrastructure/system from scratch
-- Used React Native Paper as a component library
-- React Navigation
+- Used [React Native Paper](https://callstack.github.io/react-native-paper) as a component library
+- [React Navigation](https://reactnavigation.org/)
 - React Context
-- AsyncStorage
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/install/)
 - Expo Camera
 - Firebase (Cloud Functions)
-- Lottie
+- [Lottie-React-Native Animations](https://github.com/lottie-react-native/lottie-react-native)
 - [Google Maps Service](https://github.com/googlemaps/google-maps-services-js)
-- Google Places API
-- Google Geocoding API
+- [Google Places API](https://developers.google.com/maps/documentation/places/web-service)
+- [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
+- [Expo Stripe Client](https://github.com/expo/stripe-expo)
+- [React Native Credit Card Input](https://www.npmjs.com/package/react-native-credit-card-input)
 
 ### Camera
 
