@@ -7,9 +7,9 @@ import { Text } from "../../../components/typography/text.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card/restaurant-info-card.component";
-import { RestaurantList } from "../../restaurants/screens/restaurants.style";
 
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { RestaurantList } from "../../restaurants/screens/restaurants/restaurants.style";
 
 const NoFavouritesArea = styled(SafeArea)`
   align-items: center;

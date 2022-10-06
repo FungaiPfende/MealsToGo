@@ -1,22 +1,22 @@
 import React, { useContext, useState } from "react";
 import { TouchableOpacity as TouchableHighlight } from "react-native";
 
-import { Spacer } from "../../../components/spacer/spacer.component";
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { colours } from "../../../../infrastructure/theme/colours";
 
-import { RestaurantInfoCard } from "../components/restaurant-info-card/restaurant-info-card.component";
-import { Search } from "../components/search/search.component";
-import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
+import { FadeInView } from "../../../../components/animations/fade.animation";
+import { FavouritesBar } from "../../../../components/favourites/favourites-bar.component";
+import { Spacer } from "../../../../components/spacer/spacer.component";
+import { Text } from "../../../../components/typography/text.component";
+import { SafeArea } from "../../../../components/utility/safe-area.component";
 
-import { colours } from "../../../infrastructure/theme/colours";
+import { FavouritesContext } from "../../../../services/favourites/favourites.context";
+import { LocationContext } from "../../../../services/location/location.context";
+import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
 
-import { RestaurantList, Loader, LoadingContainer } from "./restaurants.style";
+import { RestaurantInfoCard } from "../../components/restaurant-info-card/restaurant-info-card.component";
+import { Search } from "../../components/search/search.component";
 
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
-import { FavouritesContext } from "../../../services/favourites/favourites.context";
-import { FadeInView } from "../../../components/animations/fade.animation";
-import { LocationContext } from "../../../services/location/location.context";
-import { Text } from "../../../components/typography/text.component";
+import { Loader, LoadingContainer, RestaurantList } from "./restaurants.style";
 
 export const RestaurantsScreen = ({ navigation }) => {
   // Choose which context I want to use in this component
