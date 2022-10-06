@@ -10,15 +10,17 @@ import { RestaurantInfoCard } from "../../components/restaurant-info-card/restau
 import { OrderButton } from "./restaurant-details.styles";
 import { CartContext } from "../../../../services/cart/cart.context";
 
-export const RestaurantDetailsScreen = ({ route }) => {
+export const RestaurantDetailsScreen = ({ route, navigation }) => {
   const { restaurant } = route.params;
   const { addToCart } = useContext(CartContext);
 
-  const handlePress = () =>
+  const handlePress = () => {
     addToCart(
       { item: `${restaurant.name}'s Special`, price: 1299 },
       restaurant
     );
+    navigation.navigate("Checkout");
+  };
 
   return (
     <SafeArea>
