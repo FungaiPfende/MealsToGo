@@ -9,6 +9,7 @@ import {
   ClearButton,
   NameInput,
   PayButton,
+  PaymentProcessing,
 } from "../components/checkout.styles";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -23,14 +24,25 @@ export const CheckoutScreen = () => {
 
   const [name, setName] = useState(null);
   const [card, setCard] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onPay = () => {
+    setIsLoading(true);
     if (!card || !card.id) {
+      setIsLoading(false);
       console.log("Error: No card available");
       return;
     }
 
-    paymentRequest(card.id, sum, name);
+    paymentRequest(card.id, sum, name)
+      .then((result) => {
+        setIsLoading(false);
+        console.log("Payment successful");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log("Payment failed:", error);
+      });
   };
 
   if (!cart.length || !restaurant) {
@@ -48,6 +60,8 @@ export const CheckoutScreen = () => {
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
+
+      {isLoading && <PaymentProcessing />}
 
       <ScrollView>
         <Spacer position="left" size="medium">
@@ -76,9 +90,13 @@ export const CheckoutScreen = () => {
             {name && <CreditCardInput name={name} onSuccess={setCard} />}
 
             <Spacer position="top" size="xlarge">
-              <PayButton onPress={() => onPay()}>Pay</PayButton>
+              <PayButton onPress={() => onPay()} disabled={isLoading}>
+                Pay
+              </PayButton>
               <Spacer position="top" size="large" />
-              <ClearButton onPress={() => clearCart()}>Clear Cart</ClearButton>
+              <ClearButton onPress={() => clearCart()} disabled={isLoading}>
+                Clear Cart
+              </ClearButton>
             </Spacer>
           </Spacer>
         </Spacer>
