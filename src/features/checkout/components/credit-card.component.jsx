@@ -3,7 +3,7 @@ import { LiteCreditCardInput } from "react-native-credit-card-input";
 
 import { cardTokenRequest } from "../../../services/checkout/checkout.service";
 
-export const CreditCardInput = ({ name = "Fungai" }) => {
+export const CreditCardInput = ({ name, onSuccess }) => {
   const handleChange = async (formData) => {
     const { values, status } = formData;
     const isIncomplete = Object.values(status).includes("incomplete");
@@ -17,11 +17,13 @@ export const CreditCardInput = ({ name = "Fungai" }) => {
       name,
     };
 
-    try {
-      const info = await cardTokenRequest(card);
-      console.log(info);
-    } catch (error) {
-      console.log("Error on Stripe request:", error.error);
+    if (!isIncomplete) {
+      try {
+        const cardInfo = await cardTokenRequest(card);
+        onSuccess(cardInfo);
+      } catch (error) {
+        console.log("Error on Stripe request:", error.error);
+      }
     }
 
     // console.log(formData);

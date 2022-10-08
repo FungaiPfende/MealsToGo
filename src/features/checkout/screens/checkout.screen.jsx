@@ -16,11 +16,22 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { CartContext } from "../../../services/cart/cart.context";
+import { paymentRequest } from "../../../services/checkout/checkout.service";
 
 export const CheckoutScreen = () => {
   const { cart, restaurant, sum, clearCart } = useContext(CartContext);
 
   const [name, setName] = useState(null);
+  const [card, setCard] = useState(null);
+
+  const onPay = () => {
+    if (!card || !card.id) {
+      console.log("Error: No card available");
+      return;
+    }
+
+    paymentRequest(card.id, sum, name);
+  };
 
   if (!cart.length || !restaurant) {
     return <EmptyCart />;
@@ -45,8 +56,11 @@ export const CheckoutScreen = () => {
           </Spacer>
 
           <List.Section>
-            {cart.map(({ item, price }) => (
-              <List.Item title={`${item} - $${price / 100}`} />
+            {cart.map(({ item, price }, index) => (
+              <List.Item
+                title={`${item} - $${price / 100}`}
+                key={`${item}-${index}`}
+              />
             ))}
           </List.Section>
           <Text variant="label">{`Total: $${sum / 100}`}</Text>
@@ -59,10 +73,10 @@ export const CheckoutScreen = () => {
               onChangeText={(t) => handleChange(t)}
             />
 
-            {name && <CreditCardInput name={name} />}
+            {name && <CreditCardInput name={name} onSuccess={setCard} />}
 
             <Spacer position="top" size="xlarge">
-              <PayButton onPress={() => null}>Pay</PayButton>
+              <PayButton onPress={() => onPay()}>Pay</PayButton>
               <Spacer position="top" size="large" />
               <ClearButton onPress={() => clearCart()}>Clear Cart</ClearButton>
             </Spacer>
