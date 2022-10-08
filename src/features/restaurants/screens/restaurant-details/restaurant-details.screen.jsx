@@ -6,8 +6,8 @@ import { SafeArea } from "../../../../components/utility/safe-area.component";
 import { Spacer } from "../../../../components/spacer/spacer.component";
 
 import { RestaurantInfoCard } from "../../components/restaurant-info-card/restaurant-info-card.component";
-
 import { OrderButton } from "./restaurant-details.styles";
+
 import { CartContext } from "../../../../services/cart/cart.context";
 
 export const RestaurantDetailsScreen = ({ route, navigation }) => {
@@ -68,7 +68,11 @@ export const RestaurantDetailsScreen = ({ route, navigation }) => {
       </ScrollView>
 
       <Spacer position="bottom" size="large">
-        <OrderButton mode="contained" icon="cash-usd" onPress={handlePress}>
+        <OrderButton
+          mode="contained"
+          icon="cash-usd"
+          onPress={() => handlePress()}
+        >
           Order Special for only $12.99!
         </OrderButton>
       </Spacer>
