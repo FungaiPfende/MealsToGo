@@ -4,7 +4,7 @@ import { ActivityIndicator } from "react-native-paper";
 
 export const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
-    padding: 16,
+    padding: 0,
   },
 })``;
 

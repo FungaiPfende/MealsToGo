@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState } from "react";
 import { Alert } from "react-native";
-import { List, Avatar } from "react-native-paper";
+import { List, Avatar, Divider } from "react-native-paper";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
 import { launchImageLibraryAsync } from "expo-image-picker";
@@ -49,7 +49,7 @@ export const SettingsScreen = ({ navigation }) => {
     getImageFromStorage(user);
   };
 
-  const ALERT_BUTTONS = [
+  const PROFILE_PICTURE_ALERT_BUTTONS = [
     {
       text: "Take a photo",
       onPress: () => navigation.navigate("Camera"),
@@ -70,7 +70,28 @@ export const SettingsScreen = ({ navigation }) => {
   ];
 
   const updateProfilePicture = () =>
-    Alert.alert("Update your profile photo", "", ALERT_BUTTONS);
+    Alert.alert("Update your profile photo", "", PROFILE_PICTURE_ALERT_BUTTONS);
+
+  const LOGOUT_ALERT_BUTTONS = [
+    {
+      text: "Yes",
+      onPress: () => onLogout(),
+      style: "destructive",
+    },
+
+    {
+      text: "No",
+      onPress: () => null,
+      style: "default",
+    },
+  ];
+
+  const handleLogout = () =>
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      LOGOUT_ALERT_BUTTONS
+    );
 
   // Update the profile picture anytime the navigation changes
   useFocusEffect(() => getImageFromStorage(user));
@@ -105,15 +126,26 @@ export const SettingsScreen = ({ navigation }) => {
         <SettingsItem
           title="Favourites"
           description="View all your favourites"
-          left={() => <Icon color="black" icon="heart" />}
+          left={() => <Icon color={colours.ui.primary} icon="heart" />}
           onPress={() => navigation.navigate("Favourites")}
         />
+
+        <Divider />
+
+        <SettingsItem
+          title="Past orders"
+          description="View all your previous orders"
+          left={() => <Icon color={colours.ui.primary} icon="history" />}
+          onPress={() => null}
+        />
+
+        <Divider />
 
         <SettingsItem
           title="Logout"
           description="Log out of the app"
           left={() => <Icon color="red" icon="door" />}
-          onPress={() => onLogout()}
+          onPress={() => handleLogout()}
         />
       </List.Section>
     </SafeArea>

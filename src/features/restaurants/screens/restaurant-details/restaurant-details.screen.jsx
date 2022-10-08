@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
 import React, { useContext } from "react";
-import { List } from "react-native-paper";
+import { Divider, List } from "react-native-paper";
 
 import { SafeArea } from "../../../../components/utility/safe-area.component";
 import { Spacer } from "../../../../components/spacer/spacer.component";
@@ -37,6 +37,8 @@ export const RestaurantDetailsScreen = ({ route, navigation }) => {
             <List.Item title="Oats with juice" />
           </List.Accordion>
 
+          <Divider />
+
           <List.Accordion
             title="Lunch"
             left={(props) => <List.Icon {...props} icon="hamburger" />}
@@ -46,6 +48,8 @@ export const RestaurantDetailsScreen = ({ route, navigation }) => {
             <List.Item title="Steak sandwich" />
           </List.Accordion>
 
+          <Divider />
+
           <List.Accordion
             title="Dinner"
             left={(props) => <List.Icon {...props} icon="food-variant" />}
@@ -54,6 +58,8 @@ export const RestaurantDetailsScreen = ({ route, navigation }) => {
             <List.Item title="Fish & Chips" />
             <List.Item title="Sadza" />
           </List.Accordion>
+
+          <Divider />
 
           <List.Accordion
             title="Drinks"
