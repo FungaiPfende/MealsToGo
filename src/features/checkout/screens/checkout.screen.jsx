@@ -5,7 +5,11 @@ import { List } from "react-native-paper";
 import { CreditCardInput } from "../components/credit-card.component";
 import { EmptyCart } from "../components/empty-cart.component";
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card/restaurant-info-card.component";
-import { NameInput } from "../components/checkout.styles";
+import {
+  ClearButton,
+  NameInput,
+  PayButton,
+} from "../components/checkout.styles";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Text } from "../../../components/typography/text.component";
@@ -14,7 +18,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CartContext } from "../../../services/cart/cart.context";
 
 export const CheckoutScreen = () => {
-  const { cart, restaurant, sum } = useContext(CartContext);
+  const { cart, restaurant, sum, clearCart } = useContext(CartContext);
 
   const [name, setName] = useState(null);
 
@@ -56,6 +60,12 @@ export const CheckoutScreen = () => {
             />
 
             {name && <CreditCardInput name={name} />}
+
+            <Spacer position="top" size="xlarge">
+              <PayButton onPress={() => null}>Pay</PayButton>
+              <Spacer position="top" size="large" />
+              <ClearButton onPress={() => clearCart()}>Clear Cart</ClearButton>
+            </Spacer>
           </Spacer>
         </Spacer>
       </ScrollView>
