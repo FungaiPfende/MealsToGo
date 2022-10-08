@@ -47,7 +47,7 @@ export const AppNavigator = () => {
               <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
               <Tab.Screen name="Checkout" component={CheckoutNavigator} />
               <Tab.Screen name="Map" component={MapScreen} />
-              <Tab.Screen name="SettingsTab" component={SettingsNavigator} />
+              <Tab.Screen name="Settings" component={SettingsNavigator} />
             </Tab.Navigator>
           </CartContextProvider>
         </RestaurantsContextProvider>

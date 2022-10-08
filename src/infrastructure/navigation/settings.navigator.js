@@ -20,7 +20,7 @@ export const SettingsNavigator = () => {
     >
       <SettingsStack.Screen
         options={{ header: () => null }}
-        name="Settings"
+        name="SettingsScreen"
         component={SettingsScreen}
       />
       <SettingsStack.Screen name="Favourites" component={FavouritesScreen} />
