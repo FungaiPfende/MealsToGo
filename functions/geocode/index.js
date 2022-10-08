@@ -1,7 +1,7 @@
 const { locations: locationsMock } = require("./geocode.mock");
 const url = require("url");
 
-module.exports.geocodeRequest = (request, response, client) => {
+module.exports.geocodeRequest = (request, response, googleClient) => {
   const { city, mock } = url.parse(request.url, true).query;
   if (mock === "true") {
     const locationMock = locationsMock[city.toLowerCase()];
@@ -9,11 +9,11 @@ module.exports.geocodeRequest = (request, response, client) => {
     return response.json(locationMock);
   }
 
-  client
+  googleClient
     .geocode({
       params: {
         address: city,
-        key: process.env.KEY,
+        key: process.env.SECRET_GOOGLE_KEY,
       },
       timeout: 1000,
     })

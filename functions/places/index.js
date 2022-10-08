@@ -11,12 +11,12 @@ const addGoogleImage = (restaurant) => {
   }
 
   restaurant.photos = [
-    `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${process.env.KEY}`,
+    `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${ref}&key=${process.env.SECRET_GOOGLE_KEY}`,
   ];
   return restaurant;
 };
 
-module.exports.placesRequest = (request, response, client) => {
+module.exports.placesRequest = (request, response, googleClient) => {
   const { location, mock } = url.parse(request.url, true).query;
   if (mock === "true") {
     const data = mocks[location];
@@ -27,13 +27,13 @@ module.exports.placesRequest = (request, response, client) => {
     return response.json(data);
   }
 
-  client
+  googleClient
     .placesNearby({
       params: {
         location: location,
         radius: 1500,
         type: "restaurant",
-        key: process.env.KEY,
+        key: process.env.SECRET_GOOGLE_KEY,
       },
       timeout: 1000,
     })
