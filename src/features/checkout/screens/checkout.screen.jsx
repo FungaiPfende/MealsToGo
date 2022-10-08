@@ -19,30 +19,37 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CartContext } from "../../../services/cart/cart.context";
 import { paymentRequest } from "../../../services/checkout/checkout.service";
 
-export const CheckoutScreen = () => {
+export const CheckoutScreen = ({ navigation }) => {
   const { cart, restaurant, sum, clearCart } = useContext(CartContext);
 
   const [name, setName] = useState(null);
   const [card, setCard] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onPay = () => {
+  const onPay = async () => {
     setIsLoading(true);
     if (!card || !card.id) {
       setIsLoading(false);
-      console.log("Error: No card available");
+      navigation.navigate("CheckoutFailureScreen", {
+        error: "Please fill in a valid card",
+      });
+      console.log("Error: Invalid Card");
       return;
     }
 
-    paymentRequest(card.id, sum, name)
-      .then((result) => {
-        setIsLoading(false);
-        console.log("Payment successful");
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log("Payment failed:", error);
+    try {
+      await paymentRequest(card.id, sum, name);
+      setIsLoading(false);
+      navigation.navigate("CheckoutSuccessScreen");
+      console.log("Payment successful");
+      clearCart();
+    } catch (error) {
+      setIsLoading(false);
+      navigation.navigate("CheckoutFailureScreen", {
+        error: error,
       });
+      console.log("Payment failed:", error);
+    }
   };
 
   if (!cart.length || !restaurant) {
@@ -56,6 +63,11 @@ export const CheckoutScreen = () => {
       setName(null);
     }
   };
+
+  const handleFailure = () =>
+    navigation.navigate("CheckoutFailureScreen", {
+      error: "Something went wrong processing your payment",
+    });
 
   return (
     <SafeArea>
@@ -87,7 +99,13 @@ export const CheckoutScreen = () => {
               onChangeText={(t) => handleChange(t)}
             />
 
-            {name && <CreditCardInput name={name} onSuccess={setCard} />}
+            {name && (
+              <CreditCardInput
+                name={name}
+                onSuccess={setCard}
+                onFailure={handleFailure}
+              />
+            )}
 
             <Spacer position="top" size="xlarge">
               <PayButton onPress={() => onPay()} disabled={isLoading}>
