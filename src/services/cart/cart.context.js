@@ -12,6 +12,28 @@ export const CartContextProvider = ({ children }) => {
   const [restaurant, setRestaurant] = useState(null);
   const [sum, setSum] = useState(0);
 
+  const saveCart = async (rst, crt, uid) => {
+    try {
+      const jsonValue = JSON.stringify({ restaurant: rst, cart: crt });
+      await AsyncStorageLib.setItem(`@cart-${uid}`, jsonValue);
+    } catch (error) {
+      console.log("Error saving cart session:", error);
+    }
+  };
+
+  const loadCart = async (uid) => {
+    try {
+      const value = await AsyncStorageLib.getItem(`@cart-${uid}`);
+      if (value !== null) {
+        const { restaurant: rst, cart: crt } = JSON.parse(value);
+        setCart(crt);
+        setRestaurant(rst);
+      }
+    } catch (error) {
+      console.log("Error loading cart session:", error);
+    }
+  };
+
   useEffect(() => {
     if (user && user.uid) {
       saveCart(restaurant, cart, user.uid);
@@ -36,26 +58,6 @@ export const CartContextProvider = ({ children }) => {
 
     setSum(newSum);
   }, [cart]);
-
-  const saveCart = async (rst, crt, uid) => {
-    try {
-      const jsonValue = JSON.stringify({ restaurant: rst, cart: crt });
-      await AsyncStorageLib.setItem(`@cart-${uid}`, jsonValue);
-    } catch (error) {
-      console.log("Error saving cart:", error);
-    }
-  };
-
-  const loadCart = async (uid) => {
-    try {
-      const value = await AsyncStorageLib.getItem(`@cart-${uid}`);
-      if (value !== null) {
-        const { restaurant: rst, cart: crt } = JSON.parse(value);
-        setCart(crt);
-        setRestaurant(rst);
-      }
-    } catch (error) {}
-  };
 
   const addToCart = (item, rst) => {
     if (!restaurant || restaurant.placeId !== rst.placeId) {

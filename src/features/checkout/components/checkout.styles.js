@@ -2,7 +2,6 @@ import {
   ActivityIndicator,
   Avatar,
   Button,
-  Colors,
   TextInput,
 } from "react-native-paper";
 import styled from "styled-components/native";
@@ -23,6 +22,7 @@ export const CartIcon = styled(Avatar.Icon).attrs({
 
 export const NameInput = styled(TextInput)`
   margin: ${({ theme }) => theme.space.lg};
+  margin-left: 0;
 `;
 
 export const PayButton = styled(Button).attrs({
@@ -48,7 +48,7 @@ export const ClearButton = styled(Button).attrs({
 export const PaymentProcessing = styled(ActivityIndicator).attrs({
   size: 128,
   animating: true,
-  color: Colors.blue300,
+  color: colours.brand.secondary,
 })`
   position: absolute;
   top: 50%;
