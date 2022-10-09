@@ -15,7 +15,7 @@
 - [Google Places API](https://developers.google.com/maps/documentation/places/web-service)
 - [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
 - [Expo Stripe Client](https://github.com/expo/stripe-expo)
-- [React Native Credit Card Input](https://www.npmjs.com/package/react-native-credit-card-input)
+- [React Native Credit Card Input](https://github.com/sbycrosz/react-native-credit-card-input#readme)
 
 ### Camera
 
