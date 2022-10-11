@@ -13,6 +13,7 @@ import {
 } from "../components/checkout.styles";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
+import { KeyboardAvoider } from "../../../components/utility/keyboard-avoider.component";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
@@ -71,58 +72,68 @@ export const CheckoutScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
-      <RestaurantInfoCard restaurant={restaurant} />
+      <KeyboardAvoider>
+        <RestaurantInfoCard restaurant={restaurant} />
 
-      {isLoading && <PaymentProcessing />}
+        {isLoading && <PaymentProcessing />}
 
-      <ScrollView>
-        <Spacer position="left" size="medium">
-          <Spacer position="top" size="xlarge">
-            <Text variant="title">Your Order:</Text>
-          </Spacer>
-
-          <List.Section>
-            {cart.map(({ item, price }, index) => (
-              <List.Item
-                title={`${item} - $${price / 100}`}
-                key={`${item}-${index}`}
-              />
-            ))}
-          </List.Section>
-          <Text variant="label">{`Total: $${sum / 100}`}</Text>
-
-          <Spacer position="top" size="large">
-            <Divider />
-          </Spacer>
-
-          <Spacer position="top" size="large">
-            <Text variant="title">Make Payment</Text>
-            <NameInput
-              label="Name"
-              value={name}
-              onChangeText={(t) => handleChange(t)}
-            />
-
-            {name && (
-              <CreditCardInput
-                name={name}
-                onSuccess={setCard}
-                onFailure={handleFailure}
-              />
-            )}
-
+        <ScrollView>
+          <Spacer position="left" size="medium">
+            {/* Order List */}
             <Spacer position="top" size="xlarge">
-              <PayButton onPress={() => onPay()} disabled={isLoading}>
-                Pay
-              </PayButton>
-              <Spacer position="top" size="large" />
-              <ClearButton onPress={() => clearCart()} disabled={isLoading}>
-                Clear Cart
-              </ClearButton>
+              <Text variant="title">Your Order:</Text>
+            </Spacer>
+
+            <List.Section>
+              {cart.map(({ item, price }, index) => (
+                <List.Item
+                  title={`${item} - $${price / 100}`}
+                  key={`${item}-${index}`}
+                />
+              ))}
+            </List.Section>
+            <Text variant="label">{`Total: $${sum / 100}`}</Text>
+
+            <Spacer position="top" size="large">
+              <Divider />
+            </Spacer>
+
+            {/* Input Fields */}
+            <Spacer position="top" size="large">
+              <Text variant="title">Make Payment</Text>
+
+              <NameInput
+                label="Name"
+                value={name}
+                onChangeText={(t) => handleChange(t)}
+              />
+
+              {name && (
+                <CreditCardInput
+                  name={name}
+                  onSuccess={setCard}
+                  onFailure={handleFailure}
+                />
+              )}
+
+              {/* Buttons */}
+              <Spacer position="top" size="xlarge">
+                <Spacer position="bottom" size="xxlarge">
+                  <PayButton onPress={() => onPay()} disabled={isLoading}>
+                    Pay
+                  </PayButton>
+
+                  <Spacer position="top" size="large" />
+
+                  <ClearButton onPress={() => clearCart()} disabled={isLoading}>
+                    Clear Cart
+                  </ClearButton>
+                </Spacer>
+              </Spacer>
             </Spacer>
           </Spacer>
-        </Spacer>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoider>
     </SafeArea>
   );
 };
