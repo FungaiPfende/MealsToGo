@@ -7,6 +7,6 @@ export const OrderButton = styled(Button).attrs({
   color: colours.brand.primary,
 })`
   padding: ${({ theme }) => theme.space.md};
-  width: 80%;
+  width: 90%;
   align-self: center;
 `;
