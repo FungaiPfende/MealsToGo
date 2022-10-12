@@ -2,6 +2,8 @@ import React from "react";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+
+import { ExpoStatusBar } from "../../../components/utility/expo-status-bar.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
 import { colours } from "../../../infrastructure/theme/colours";
@@ -18,6 +20,8 @@ export const CheckoutFailureScreen = ({ route }) => {
         <Spacer position="top" size="medium" />
         <Text>{error}!</Text>
       </CartIconContainer>
+
+      <ExpoStatusBar />
     </SafeArea>
   );
 };

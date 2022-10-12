@@ -1,10 +1,11 @@
 import React from "react";
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { useFonts, Oswald_400Regular } from "@expo-google-fonts/oswald";
 import { Lato_400Regular } from "@expo-google-fonts/lato";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+
+import { ExpoStatusBar } from "./src/components/utility/expo-status-bar.component";
 
 import { theme } from "./src/infrastructure/theme";
 import { Navigation } from "./src/infrastructure/navigation";
@@ -47,7 +48,7 @@ export default function App() {
         </AuthContextProvider>
       </ThemeProvider>
 
-      <ExpoStatusBar style="dark" />
+      <ExpoStatusBar />
     </>
   );
 }

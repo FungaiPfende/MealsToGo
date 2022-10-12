@@ -19,6 +19,7 @@ import {
 } from "../components/settings.styles";
 
 import { AuthContext } from "../../../services/authentication/authentication.context";
+import { ExpoStatusBar } from "../../../components/utility/expo-status-bar.component";
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthContext);
@@ -148,6 +149,8 @@ export const SettingsScreen = ({ navigation }) => {
           onPress={() => handleLogout()}
         />
       </List.Section>
+
+      <ExpoStatusBar />
     </SafeArea>
   );
 };

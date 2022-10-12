@@ -19,6 +19,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { CartContext } from "../../../services/cart/cart.context";
 import { paymentRequest } from "../../../services/checkout/checkout.service";
+import { ExpoStatusBar } from "../../../components/utility/expo-status-bar.component";
 
 export const CheckoutScreen = ({ navigation }) => {
   const { cart, restaurant, sum, clearCart } = useContext(CartContext);
@@ -118,7 +119,7 @@ export const CheckoutScreen = ({ navigation }) => {
 
               {/* Buttons */}
               <Spacer position="top" size="xlarge">
-                <Spacer position="bottom" size="xxlarge">
+                <Spacer position="bottom" size="large">
                   <PayButton onPress={() => onPay()} disabled={isLoading}>
                     Pay
                   </PayButton>
@@ -134,6 +135,8 @@ export const CheckoutScreen = ({ navigation }) => {
           </Spacer>
         </ScrollView>
       </KeyboardAvoider>
+
+      <ExpoStatusBar theme="dark" />
     </SafeArea>
   );
 };
